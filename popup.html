@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>GPT Cleaner</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="header">
+            <div class="title-container">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="icon">
+                    <path
+                        d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M7 15L12 10L17 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <h1>GPT Cleaner</h1>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="toggle-extension" />
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="main-content">
+            <div class="status-box">
+                <div class="status-indicator">
+                    <span class="dot active" id="dot-active"></span>
+                    <span id="status-text">Active</span>
+                </div>
+                <div id="stats" class="stats-text"><span id="virtualized-count">0</span> messages virtualized</div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-header">
+                    <label for="visible-count">Visible Messages</label>
+                    <span id="visible-count-value">10</span>
+                </div>
+                <input type="range" id="visible-count" min="5" max="50" step="5" value="10" />
+                <p class="help-text">Fewer messages kept visible = smoother performance.</p>
+            </div>
+
+            <button id="restore-all" class="btn secondary">Restore All Current Messages</button>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
