@@ -358,4 +358,12 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
         sendResponse({ ok: true });
         return true;
     }
+
+    if (request.action === 'reOptimize') {
+        if (settings.enabled) {
+            virtualizeExcess();
+        }
+        sendResponse({ ok: true });
+        return true;
+    }
 });

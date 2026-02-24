@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const visibleCountInput = document.getElementById('visible-count');
     const visibleCountValue = document.getElementById('visible-count-value');
     const restoreAllBtn = document.getElementById('restore-all');
+    const reOptimizeBtn = document.getElementById('re-optimize');
     const dotActive = document.getElementById('dot-active');
     const statusText = document.getElementById('status-text');
     const virtualizedCountEl = document.getElementById('virtualized-count');
@@ -47,6 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateStatusUI(false);
                     setTimeout(refreshStatus, 300);
                 });
+            });
+        });
+    });
+
+    reOptimizeBtn.addEventListener('click', () => {
+        // Enable if not already enabled, and force strict virtualization
+        chrome.storage.sync.set({ enabled: true }, () => {
+            toggleInput.checked = true;
+            updateStatusUI(true);
+            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                if (tabs.length > 0) {
+                    chrome.tabs.sendMessage(tabs[0].id, { action: 'reOptimize' }, () => {
+                        setTimeout(refreshStatus, 300);
+                    });
+                }
             });
         });
     });

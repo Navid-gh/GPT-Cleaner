@@ -139,16 +139,23 @@ input[type='range']::-webkit-slider-runnable-track {
     margin: 0;
 }
 
-/* Buttons */
-.btn {
+/* Buttons & Layout */
+.button-group {
+    display: flex;
+    gap: 8px; /* space between buttons */
     width: 100%;
+}
+
+.btn {
+    flex: 1; /* 50/50 split */
     padding: 10px;
     border-radius: 6px;
     border: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
+    text-align: center;
 }
 
 .btn.primary {

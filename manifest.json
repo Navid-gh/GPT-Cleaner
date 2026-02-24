@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "GPT Cleaner",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Optimizes ChatGPT performance - virtualizing messages — keeps only recent messages rendered and lazily loads older ones on scroll.",
     "permissions": ["activeTab", "storage"],
     "content_scripts": [
