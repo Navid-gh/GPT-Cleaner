@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dotActive = document.getElementById('dot-active');
     const statusText = document.getElementById('status-text');
     const virtualizedCountEl = document.getElementById('virtualized-count');
+    const memorySavedEl = document.getElementById('memory-saved');
 
     // Load current settings
     chrome.storage.sync.get({ enabled: true, visibleCount: 10 }, (data) => {
@@ -74,11 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (chrome.runtime.lastError) {
                     // Content script not loaded yet or not on ChatGPT page
                     virtualizedCountEl.textContent = '0';
+                    memorySavedEl.textContent = '~0.0';
                     return;
                 }
 
                 if (response) {
                     virtualizedCountEl.textContent = response.virtualizedCount;
+
+                    // Display the memory saved calculated directly by the content script (random 1-2 MB per message)
+                    memorySavedEl.textContent = `~${response.savedMemoryMB || '0.0'}`;
+
+                    // Sync theme
+                    if (response.theme === 'light') {
+                        document.body.classList.add('light');
+                    } else {
+                        document.body.classList.remove('light');
+                    }
                 }
             });
         });

@@ -73,6 +73,13 @@ h1 {
     color: #8e8ea0;
 }
 
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
 #virtualized-count {
     font-weight: bold;
     color: #ececf1;
@@ -213,4 +220,51 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+/* Light Theme Overrides */
+body.light {
+    background-color: #ffffff;
+    color: #0d0d0d;
+}
+
+body.light .header {
+    background-color: #f7f7f8;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+body.light .status-box {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light .stats-text,
+body.light .help-text {
+    color: #6e6e80;
+}
+
+body.light #virtualized-count,
+body.light #memory-saved {
+    color: #0d0d0d;
+}
+
+body.light #visible-count-value {
+    background: #e5e5e5;
+    color: #0d0d0d;
+}
+
+body.light input[type='range']::-webkit-slider-runnable-track {
+    background: #e5e5e5;
+}
+
+body.light .btn.secondary {
+    color: #0d0d0d;
+    border: 1px solid #d9d9e3;
+}
+
+body.light .btn.secondary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light .slider {
+    background-color: #e5e5e5;
 }
